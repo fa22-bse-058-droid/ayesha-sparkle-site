@@ -6,7 +6,7 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
+const repoName = process.env.GITHUB_REPOSITORY?.split("/").pop();
 const base =
   process.env.GITHUB_PAGES === "true" && repoName ? `/${repoName}/` : "/";
 

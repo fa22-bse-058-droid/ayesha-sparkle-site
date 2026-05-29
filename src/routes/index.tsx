@@ -247,46 +247,72 @@ function About() {
   return (
     <section id="about" className="relative py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionLabel num="02" title="About me" />
-        <div className="grid lg:grid-cols-3 gap-5">
-          <div className="reveal lg:col-span-2 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-10">
-            <p className="font-display text-2xl sm:text-3xl leading-snug">
-              I help brands scale profitably using <span className="text-[#1A6BFF]">Meta &amp; Google Ads</span>, AI tools, and structured data-driven systems that turn ad spend into consistent growth.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-3 text-sm text-secondary-soft">
-              {["Audit", "Strategy", "Launch", "Results"].map((s, i, a) => (
-                <span key={s} className="flex items-center gap-3">
-                  <span className="px-4 py-2 rounded-full border border-white/15 text-white">{s}</span>
-                  {i < a.length - 1 && <span className="text-[#1A6BFF]">→</span>}
-                </span>
-              ))}
-            </div>
-          </div>
+        <p className="reveal text-[11px] tracking-[0.3em] uppercase text-[#1A6BFF] mb-6 text-center">02 — About</p>
+        <h2 className="reveal font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-center leading-[1.05] max-w-5xl mx-auto">
+          Strategic. Creative.<br />
+          <span className="text-[#1A6BFF]">Results-Focused.</span>
+        </h2>
+        <p className="reveal mt-8 text-center text-secondary-soft max-w-2xl mx-auto text-lg">
+          I help brands scale profitably using Meta &amp; Google Ads, AI tools, and structured data-driven systems.
+        </p>
 
-          <div className="reveal rounded-3xl border border-white/10 bg-[#0a1220] p-10 flex flex-col justify-between gap-8">
-            {[
-              { n: 3, suf: "+", l: "Years Experience" },
-              { n: 50, suf: "+", l: "Brands Scaled" },
-              { n: 167, suf: "%", l: "Avg. ROAS" },
-            ].map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-4xl font-bold text-[#1A6BFF]">
-                  <CountUp end={s.n} suffix={s.suf} />
-                </div>
-                <div className="text-sm text-secondary-soft mt-1">{s.l}</div>
-              </div>
-            ))}
-          </div>
-
+        {/* Asymmetric card grid */}
+        <div className="mt-20 grid lg:grid-cols-5 gap-5">
           {[
-            { icon: Target, t: "Strategic", d: "Every decision rooted in data and clear objectives." },
-            { icon: Sparkles, t: "Creative", d: "Stories and visuals that stop the scroll." },
-            { icon: TrendingUp, t: "Results Focused", d: "Built for ROAS, not vanity metrics." },
-          ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="reveal rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:border-[#1A6BFF]/40 transition-colors">
-              <Icon className="size-6 text-[#1A6BFF] mb-4" />
-              <h3 className="font-display text-xl font-semibold">{t}</h3>
-              <p className="text-secondary-soft text-sm mt-2 leading-relaxed">{d}</p>
+            { span: "lg:col-span-3", label: "Approach", title: "Strategy First", desc: "Every campaign starts with a deep audit of your brand, audience, and offer. No guessing — only data-backed decisions that compound over time." },
+            { span: "lg:col-span-2", label: "Craft", title: "Creative That Converts", desc: "Scroll-stopping visuals and copy engineered for the algorithm and the human behind the screen." },
+            { span: "lg:col-span-2", label: "Tools", title: "AI-Native Workflow", desc: "Modern AI systems baked into every step — faster output, sharper targeting, leaner spend." },
+            { span: "lg:col-span-3", label: "Outcome", title: "Built for ROAS", desc: "I measure success in revenue, not vanity. Every dollar of ad spend is tracked, optimized, and accountable to the bottom line." },
+          ].map((c) => (
+            <div
+              key={c.title}
+              className={`reveal ${c.span} relative border border-white/15 p-10 overflow-hidden group hover:border-[#1A6BFF]/60 transition-colors`}
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+                backgroundSize: "18px 18px",
+              }}
+            >
+              <div className="absolute inset-0 bg-[#1A6BFF] opacity-0 group-hover:opacity-[0.04] transition-opacity pointer-events-none" />
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[#1A6BFF] font-semibold mb-5">{c.label}</p>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4">{c.title}</h3>
+              <p className="text-secondary-soft leading-relaxed">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Process strip */}
+        <div className="reveal mt-20 grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/15">
+          {[
+            ["01", "Audit"],
+            ["02", "Strategy"],
+            ["03", "Launch"],
+            ["04", "Results"],
+          ].map(([n, l], i, a) => (
+            <div key={n} className={`relative p-8 ${i < a.length - 1 ? "md:border-r border-white/15" : ""}`}>
+              <div className="font-mono text-xs text-[#1A6BFF] mb-3">{n}</div>
+              <div className="font-display text-2xl font-semibold">{l}</div>
+              {i < a.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-px w-6 h-px bg-[#1A6BFF]" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Stats bar */}
+      <div className="reveal mt-20 bg-[#04080f] border-y border-white/10">
+        <div className="mx-auto max-w-7xl px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0">
+          {[
+            { n: 3, suf: "+", l: "Years Experience" },
+            { n: 50, suf: "+", l: "Brands Scaled" },
+            { n: 167, suf: "%", l: "Avg. ROAS" },
+          ].map((s, i) => (
+            <div key={s.l} className={`text-center ${i < 2 ? "md:border-r border-white/10" : ""}`}>
+              <div className="font-display text-6xl sm:text-7xl font-bold text-white">
+                <CountUp end={s.n} suffix={s.suf} />
+              </div>
+              <div className="mt-3 text-[11px] tracking-[0.3em] uppercase text-[#1A6BFF] font-semibold">{s.l}</div>
             </div>
           ))}
         </div>
@@ -457,35 +483,58 @@ function Resource() {
 function Footer() {
   return (
     <footer id="contact" className="border-t border-white/10 bg-[#04080f]">
-      <div className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-3 gap-10">
+      <div className="mx-auto max-w-7xl px-6 py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
-          <div className="font-display text-2xl font-bold">Ayesha<span className="text-[#1A6BFF]">.</span></div>
-          <p className="mt-3 text-secondary-soft text-sm max-w-xs">Scaling brands through smart strategy.</p>
+          <div className="font-display text-3xl font-bold">Ayesha<span className="text-[#1A6BFF]">.</span></div>
+          <p className="mt-4 text-secondary-soft text-sm max-w-xs leading-relaxed">
+            Scaling brands through smart strategy.
+          </p>
+          <div className="mt-6 flex gap-3">
+            {[
+              { Icon: Linkedin, href: "#", label: "LinkedIn" },
+              { Icon: Instagram, href: "#", label: "Instagram" },
+              { Icon: MessageCircle, href: "#", label: "WhatsApp" },
+            ].map(({ Icon, href, label }) => (
+              <a key={label} href={href} aria-label={label} className="p-2.5 rounded-full border border-white/15 hover:border-[#1A6BFF] hover:text-[#1A6BFF] transition">
+                <Icon className="size-4" />
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 md:justify-center text-sm text-secondary-soft">
-          {NAV.map(([l, h]) => (
-            <a key={l} href={h} className="hover:text-white transition">{l}</a>
-          ))}
+
+        <div>
+          <h4 className="text-xs uppercase tracking-[0.25em] text-white font-semibold mb-5">Navigation</h4>
+          <ul className="space-y-3 text-sm text-secondary-soft">
+            {[["Home", "#home"], ["About", "#about"], ["Services", "#services"], ["Work", "#work"]].map(([l, h]) => (
+              <li key={l}><a href={h} className="hover:text-[#1A6BFF] transition">{l}</a></li>
+            ))}
+          </ul>
         </div>
-        <div className="flex md:justify-end gap-3">
-          {[
-            { Icon: Linkedin, href: "#" },
-            { Icon: Instagram, href: "#" },
-            { Icon: MessageCircle, href: "#" },
-          ].map(({ Icon, href }, i) => (
-            <a key={i} href={href} aria-label="social" className="p-3 rounded-full border border-white/15 hover:border-[#1A6BFF] hover:text-[#1A6BFF] transition">
-              <Icon className="size-4" />
-            </a>
-          ))}
+
+        <div>
+          <h4 className="text-xs uppercase tracking-[0.25em] text-white font-semibold mb-5">Resources</h4>
+          <ul className="space-y-3 text-sm text-secondary-soft">
+            {[["Course", "#course"], ["Meta Ads Checklist", "#resources"], ["Free Consultation", "#contact"], ["Contact", "#contact"]].map(([l, h]) => (
+              <li key={l}><a href={h} className="hover:text-[#1A6BFF] transition">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs uppercase tracking-[0.25em] text-white font-semibold mb-5">Get in Touch</h4>
+          <ul className="space-y-3 text-sm text-secondary-soft">
+            <li><a href="mailto:aishazaka007@gmail.com" className="hover:text-[#1A6BFF] transition">aishazaka007@gmail.com</a></li>
+            <li><a href="tel:+923146155627" className="hover:text-[#1A6BFF] transition">+92 314 6155627</a></li>
+          </ul>
+          <a href="#contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1A6BFF] px-5 py-2.5 text-sm font-medium text-white hover:scale-[1.03] transition-transform btn-glow">
+            Book a Call <ArrowRight className="size-4" />
+          </a>
         </div>
       </div>
       <div className="border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 py-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-secondary-soft">
-          <div className="flex flex-wrap gap-x-6 gap-y-1">
-            <a href="mailto:aishazaka007@gmail.com" className="hover:text-white">aishazaka007@gmail.com</a>
-            <a href="tel:+923146155627" className="hover:text-white">+92 314 6155627</a>
-          </div>
-          <div>© 2025 Ayesha. All rights reserved.</div>
+          <div>© 2025 Ayesha Zaka. All rights reserved.</div>
+          <div>Sahiwal, Pakistan</div>
         </div>
       </div>
     </footer>

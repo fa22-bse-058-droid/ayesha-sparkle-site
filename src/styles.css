@@ -146,5 +146,37 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-secondary-soft { color: #A0ADB8; }
+  .bg-app { background-color: #060B14; }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-ticker { animation: ticker 35s linear infinite; }
+
+  @keyframes float-dot {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: .25; }
+    50% { transform: translateY(-30px) translateX(15px); opacity: .6; }
+  }
+  .animate-float-dot { animation: float-dot 8s ease-in-out infinite; }
+
+  @keyframes rise-in {
+    0% { opacity: 0; transform: translateY(28px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; }
+  .reveal.is-visible { animation: rise-in 0.9s cubic-bezier(.2,.7,.2,1) forwards; }
+
+  .btn-glow:hover { box-shadow: 0 0 40px 0 rgba(26,107,255,0.55); }
   }
 }

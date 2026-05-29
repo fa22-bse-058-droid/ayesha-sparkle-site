@@ -178,5 +178,4 @@
   .reveal.is-visible { animation: rise-in 0.9s cubic-bezier(.2,.7,.2,1) forwards; }
 
   .btn-glow:hover { box-shadow: 0 0 40px 0 rgba(26,107,255,0.55); }
-  }
 }
